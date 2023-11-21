@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index'
   resources :profiles, only: :update
 
-  resources :boats do
+  resources :cars do
     resources :bookings, only: [ :new, :create ]
   end
 

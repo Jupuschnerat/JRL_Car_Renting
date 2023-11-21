@@ -1,0 +1,40 @@
+<%= render 'image' %>
+
+<div class="container-listing">
+  <div class="row listing-content">
+    <!-- Details box -->
+    <div class="listing col-md-8">
+      <div class="listing-title">
+        <h3><strong><%= @cars.model %></strong></h3>
+        <p><%= @cars.city %></p>
+      </div><br>
+
+      <div class="listing-details">
+        <div class="row-content">
+          <div class="col-xs-3">
+            <p><strong>Highlights</strong></p>
+          </div>
+
+          <div class="col-xs-9">
+              <%= @cars.description %>
+          </div>
+        </div>
+        <br><br>
+      </div>
+
+      <div class="listing-reviews">
+        <%= render 'reviews' %>
+      </div>
+    </div>
+
+    <%= render 'bookings/form', cars: @cars, booking: @booking %>
+
+    <br><br><br>
+  </div>
+
+  <!-- TODO: Add cars's location/map -->
+
+  <div class="listing-map">
+    <%# render 'map' %>
+  </div>
+</div>
