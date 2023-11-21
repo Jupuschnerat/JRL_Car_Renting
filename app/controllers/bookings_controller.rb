@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
-      redirect_to bookings_path(@flat)
+      redirect_to bookings_path(@car)
     else
       render :new, status: :unprocessable_entity
     end

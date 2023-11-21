@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_193022) do
     t.string "model"
     t.string "city"
     t.float "price"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

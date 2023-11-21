@@ -19,7 +19,7 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
     if @car.save
-      redirect_to cars_path(@flat)
+      redirect_to cars_path(@car)
     else
       render :new, status: :unprocessable_entity
     end
