@@ -1,52 +1,57 @@
 class CarsController < ApplicationController
-  before_action :set_car, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_car, only: [:show, :edit, :update, :destroy]
 
   # GET /cars
-   def index
+  def index
     @cars = Car.all
   end
 
   # GET /cars/1
-  def show
-  end
-
-  # GET /cars/new
   def new
     @car = Car.new
+    authorize @car
   end
 
-  # POST /cars
   def create
     @car = Car.new(car_params)
+    @car.user = current_user
+    authorize @car
     if @car.save
-      redirect_to cars_path(@car)
+      redirect_to car_path(@car)
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
+
   end
 
-  # GET /cars/1/edit
   def edit
   end
 
-  # PATCH/PUT /cars/1
   def update
-    @car.update(car_params)
-    redirect_to cars_path(@cars)
+    if @car.update(car_params)
+      redirect_to car_path(@car)
+    else
+      render :edit
+    end
   end
 
-  # DELETE /cars/1
   def destroy
-    @car.destroy
-    redirect_to cars_path
+    if @car.destroy
+      redirect_to cars_path(@car)
+    else
+      render :index
+    end
   end
 
   private
 
   def set_car
     @car = Car.find(params[:id])
+    authorize @car
   end
+
   def car_params
-    params.require(:car).permit(:plate, :model, :city, :price)
+    params.require(:car).permit(:plate, :model, :city, :price, :photo)
   end
 end
