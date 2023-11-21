@@ -1,51 +1,42 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  skip_after_action :verify_policy_scoped, only: :index
+  before_action :set_booking, only: [ :show ]
+  before_action :set_car, only: [ :new, :create ]
 
-  # GET /bookings
   def index
-    @bookings = Booking.all
+    @bookings = current_user.bookings
   end
 
-  # GET /bookings/1
   def show
+    authorize @booking
   end
 
-  # GET /bookings/new
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
-  # POST /bookings
   def create
     @booking = Booking.new(booking_params)
+    authorize @booking
+    @booking.user = current_user
+    @booking.car = Car.find(params[:car_id])
     if @booking.save
-      redirect_to bookings_path(@car)
+      redirect_to booking_path(@booking)
     else
-      render :new, status: :unprocessable_entity
+      redirect_to car_path(@car)
     end
-  end
-
-  # GET /bookings/1/edit
-  def edit
-  end
-
-  # PATCH/PUT /bookings/1
-  def update
-    @booking.update(booking_params)
-    redirect_to bookings_path(@bookings)
-  end
-
-  # DELETE /bookings/1
-  def destroy
-    @car = @booking.list
-    @booking.destroy
-    redirect_to bookings_path
   end
 
   private
 
   def set_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def set_car
+    @car = Car.find(params[:car_id])
   end
 
   def booking_params
