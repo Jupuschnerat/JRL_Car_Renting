@@ -13,4 +13,8 @@ class User < ApplicationRecord
   validates_length_of :password, in: 6..20, on: :create
   validates :photo, presence: :true
 
+  attr_accessor :first_name
+  attr_accessor :last_name
+  attr_accessor :birth_date
+
 end
