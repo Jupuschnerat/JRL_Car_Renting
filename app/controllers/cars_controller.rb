@@ -5,6 +5,13 @@ class CarsController < ApplicationController
   # GET /cars
   def index
     @cars = Car.all
+
+    @markers = @cars.geocoded.map do |car|
+      {
+        lat: car.latitude,
+        lng: car.longitude
+      }
+    end
   end
 
   # GET /cars/1
