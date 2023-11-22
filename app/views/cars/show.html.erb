@@ -1,3 +1,14 @@
 <!-- app/views/articles/index.html.erb -->
-<h1>Car Details</h1>
-<%= cl_image_tag @car.photo.key, height: 200, width: 300, crop: :fit %>
+<div class="container">
+  <h2 class="show-title">Car details</h2>
+  <div>
+    <div class="car-details">
+      <p><%= @car.model%></p>
+      <p><%= @car.price %></p>
+    </div>
+    <div>
+      <%= cl_image_tag @car.photo.key, height: 200, width: 300, crop: :fit %>
+      <a href="#" class="btn btn-primary">Book a car</a>
+    </div>
+  </div>
+</div>
