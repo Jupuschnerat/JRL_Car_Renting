@@ -17,18 +17,8 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
     })
   }
- // addmarkerstomap with this. here
+    this.#addMarkersToMap()
 
-}
-
-#addMarkersToMap() {
-  this.markersValue.forEach((marker) => {
-    const popup = new mapboxgl.Popup().setHTML(marker.info_window_html) // Add this
-    new mapboxgl.Marker()
-      .setLngLat([ marker.lng, marker.lat ])
-      .setPopup(popup) // Add this
-      .addTo(this.map)
-  });
 }
 
 #addMarkersToMap() {

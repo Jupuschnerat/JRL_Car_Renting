@@ -5,7 +5,7 @@ class Car < ApplicationRecord
   belongs_to :user
   has_many :bookings
 
-  validates :plate, uniqueness: true, lenght: {is: 7}, presence: true
+  # validates :plate, uniqueness: true, lenght: {is: 7}, presence: true
   validates :model, :city, :price, :photo, presence: true
 
   after_validation :geocode, if: :will_save_change_to_address?
