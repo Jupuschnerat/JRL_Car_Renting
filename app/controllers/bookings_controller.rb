@@ -9,12 +9,12 @@ class BookingsController < ApplicationController
   end
 
   def show
-    authorize @booking
+    # authorize @booking
   end
 
   def new
     @booking = Booking.new
-    authorize @booking
+    # authorize @booking
   end
 
   def create
@@ -41,8 +41,6 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date) # missing booking price?
-  # we have a user that sets the price to rent his car, and the one that rents it
-  # so the user that rents can't change the :price so should we create different
-  # booking_params?
+
   end
 end
