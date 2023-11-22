@@ -80,9 +80,8 @@ user9 = User.create!(
   email: "Paulo9@gmail.com",
   first_name: "Paulo9",
   last_name: "Silva",
-  birth_date: Date.new(2024, 8, 22),
-  password: "123456",
-  password_confirmation: "123456"
+  birth_date: Date.parse('2023-11-30'),
+  password: "123456"
 )
 # user10 = User.create!(
 #   email: "Paulo11@gmail.com",

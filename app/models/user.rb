@@ -12,8 +12,5 @@ class User < ApplicationRecord
   # Validate password
   validates_length_of :password, in: 6..20, on: :create
 
-  attr_accessor :first_name
-  attr_accessor :last_name
-  attr_accessor :birth_date
 
 end
