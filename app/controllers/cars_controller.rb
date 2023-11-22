@@ -20,7 +20,7 @@ class CarsController < ApplicationController
   # GET /cars/1
   def new
     @car = Car.new
-    authorize @car
+    # authorize @car
   end
 
   def create

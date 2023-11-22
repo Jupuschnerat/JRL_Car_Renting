@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="mt-5 mb-3">Create a new car</h1>
+  <%= simple_form_for [@car] do |f| %>
+    <%= f.input :model %>
+    <%= f.input :price %>
+    <%= f.input :description %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+
+
+    <%= f.submit "Submit review", class: "btn btn-primary my-5" %>
+  <% end %>
+</div>
