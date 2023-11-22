@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [ :index, :show ]
   # skip_after_action :verify_policy_scoped, only: :index
   before_action :set_booking, only: [ :show ]
-  before_action :set_car, only: [ :new, :create ]
+  before_action :set_car, only: [ :new, :create, :edit ]
 
   def index
     @bookings = current_user.bookings
@@ -28,6 +28,26 @@ class BookingsController < ApplicationController
       redirect_to car_path(@car)
     end
   end
+
+  def edit
+  end
+
+  def update
+    if @booking.update(booking_params)
+      redirect_to booking_path(@booking)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @booking.destroy
+      redirect_to cars_path(@booking)
+    else
+      render :index
+    end
+  end
+
 
   private
 
