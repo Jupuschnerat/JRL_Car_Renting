@@ -91,7 +91,7 @@ user9 = User.create!(
 #   password_confirmation: "123456"
 # )
 
-car1 = Car.create!(
+car1 = Car.new(
   user: user9,
   plate: "IA7B8D1",
   description: "asjaskjakajasl",
@@ -99,6 +99,10 @@ car1 = Car.create!(
   city: "London",
   price: 200.00
 )
+file = URI.open("https://www.jeep.com.br/content/dam/jeep/products/675/1ad/1/2024/page/hero.webp")
+
+car1.photo.attach(io: file, filename: "car.png", content_type: "image/png")
+car1.save
 
 # car2 = Car.create!(
 #   plate: "IA7B8D2",
