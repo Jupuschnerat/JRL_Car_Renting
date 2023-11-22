@@ -1,0 +1,24 @@
+<%= link_to car_path(car), class: "Card" do %>
+  <div class="Card__inner">
+    <figure class="Card__img">
+      <% if car.photo.present? %>
+        <img
+          src='<%= "#{car.photo_url(:placeholder)}" %>'
+          data-lowsrc='<%= "#{car.photo_url(:placeholder)}" %>'
+          data-src='<%= "#{boat.photo}" %>'
+          alt='<%= "#{car.title}" %>'
+          class="cardphoto"
+          />
+      <% end %>
+    </figure>
+    <div class="Card__body">
+      <h3 class="Card__title"><%= car.title %></h3>
+      <div class="Card__price">$ <%= "#{car.price}0" %> / day</div>
+      <div class="Card__meta">
+        <div class="Card__rating">
+        </div>
+          <i class="fas fa-heart color-grey-text"></i>
+      </div>
+    </div>
+  </div>
+<% end %>
