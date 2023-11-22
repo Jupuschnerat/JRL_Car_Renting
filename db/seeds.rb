@@ -27,7 +27,6 @@ puts 'Seed: Seeding...'
   car=Car.new(
     user: User.last,
     plate: "IA7B8D1",
-    description: "asjaskjakajasl",
     model: "Porsche",
     city: "London",
     price: 200.00
