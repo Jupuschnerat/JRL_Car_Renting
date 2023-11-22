@@ -6,15 +6,15 @@ class CarsController < ApplicationController
   def index
     @cars = Car.all
 
-    @markers = @cars.geocoded.map do |car|
-      {
-        lat: car.latitude,
-        lng: car.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {car: car}),
-        marker_html: render_to_string(partial: "marker", locals: {car: car})
-      }
+    # @markers = @cars.geocoded.map do |car|
+    #   {
+    #     lat: car.latitude,
+    #     lng: car.longitude,
+    #     # info_window_html: render_to_string(partial: "info_window", locals: {car: car}),
+    #     # marker_html: render_to_string(partial: "marker", locals: {car: car})
+    #   }
 
-    end
+    # end
   end
 
   # GET /cars/1
@@ -26,7 +26,7 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
     @car.user = current_user
-    authorize @car
+    # authorize @car
     if @car.save
       redirect_to car_path(@car)
     else
