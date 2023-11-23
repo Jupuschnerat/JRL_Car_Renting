@@ -28,6 +28,10 @@ class CarsController < ApplicationController
     # end
   end
 
+  def show
+    @booking = Booking.new
+  end
+
   # GET /cars/1
   def new
     @car = Car.new

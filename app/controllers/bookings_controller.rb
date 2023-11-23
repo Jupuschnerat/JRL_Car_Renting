@@ -19,13 +19,16 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    authorize @booking
+    # authorize @booking
     @booking.user = current_user
-    @booking.car = Car.find(params[:car_id])
+    @booking.car = @car
+    @booking.booking_price = (@booking.end_date - @booking.start_date).to_i * @booking.car.price
+
     if @booking.save
-      redirect_to booking_path(@booking)
+      flash[:flash] = 'Booking created'
+      redirect_to car_path(@booking.car)
     else
-      redirect_to car_path(@car)
+      render 'cars/show'
     end
   end
 
@@ -60,7 +63,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date) # missing booking price?
+    params.require(:booking).permit(:start_date, :end_date)
 
   end
 end
