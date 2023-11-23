@@ -16,10 +16,15 @@
           </ul>
         </li>
       </ul>
-      <ul class="nav navbar-nav text-right">
-        <li><a class="nav-link" href="/users/sign_up"><span class="fas fa-user"></span> Sign Up</a></li>
-        <li><a class="nav-link" href="/users/sign_in"><span class="fas fa-sign-in-alt"></span> Login</a></li>
-      </ul>
+      <div class="nav navbar-nav right-content">
+      <% if current_user.nil? %>
+      <span class="fas fa-user pt-2 text-secondary"></span><%= link_to "Sign Up", new_user_registration_path, class: "sign-up my-btn nav-link pt-1" %>
+      <span class="fas fa-sign-in-alt pt-2 text-secondary"></span><%= link_to "Log In", new_user_session_path, method: :get, class: "log-in my-btn nav-link pt-1" %>
+      <% else  %>
+      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "sign-out my-btn", style: "border: 3px solid rgb(200,200,200); color: rgb(200,200,200); background-color: white" %>
+      <% end %>
+      <!-- <i class="fas fa-ellipsis-v"></i> -->
+    </div>
     </div>
   </div>
 </nav>
