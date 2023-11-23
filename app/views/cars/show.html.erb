@@ -6,7 +6,7 @@
       <p><%= @car.model%></p>
       <p><%= @car.price %></p>
     </div>
-    <div>
+    <div class="vertical-stack">
       <%= cl_image_tag @car.photo.key, height: 200, width: 300, crop: :fit %>
       <a href="#" class="btn btn-primary">Book a car</a>
     </div>
