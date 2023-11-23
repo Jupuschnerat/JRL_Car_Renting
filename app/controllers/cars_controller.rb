@@ -68,6 +68,16 @@ class CarsController < ApplicationController
     end
   end
 
+  def my_cars
+    @user = current_user
+    @cars = Car.all.filter { |car| car.user == @user}
+  end
+
+  def my_cars_show
+    @user = current_user
+    @car = Car.find(params[:id])
+  end
+
   private
 
   def set_car

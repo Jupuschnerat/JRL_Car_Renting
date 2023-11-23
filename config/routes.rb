@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   end
   resources :cars, only: [:index, :show]
   resources :bookings, only: [:edit, :update, :destroy]
+  get 'my_cars', to: 'cars#my_cars'
+  get 'my_cars/:id', to: 'cars#my_cars_show', as: :my_car
 end
