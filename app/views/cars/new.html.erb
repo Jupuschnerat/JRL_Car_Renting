@@ -8,12 +8,27 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-6">
+      <%= f.input :description %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6">
       <%= f.input :price %>
+    </div>
+  </div>
+   <div class="row justify-content-center">
+    <div class="col-6">
+      <%= f.input :city %>
     </div>
   </div>
   <div class="row justify-content-center">
     <div class="col-8">
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8">
+          <%= f.input :category, collection: %w[ sport suv suvw classic minivan ] %>
     </div>
   </div>
     <%= f.submit "Submit car", class: "btn btn-primary my-5" %>

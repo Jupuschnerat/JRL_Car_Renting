@@ -28,6 +28,9 @@ class CarsController < ApplicationController
     # end
   end
 
+  def show
+  end
+
   # GET /cars/1
   def new
     @car = Car.new
@@ -38,7 +41,7 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     @car.user = current_user
     # authorize @car
-    if @car.save
+    if @car.save!
       redirect_to car_path(@car)
     else
       render :new
@@ -72,6 +75,6 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:plate, :model, :city, :price, :photo)
+    params.require(:car).permit(:plate, :model, :description, :category, :city, :price, :photo)
   end
 end

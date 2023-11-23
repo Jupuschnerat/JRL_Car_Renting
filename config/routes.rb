@@ -4,13 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: 'pages#home'
-
-  get 'dashboard', to: 'dashboard#index'
   resources :profiles, only: :update
-
-  resources :cars do
-    resources :bookings, only: [ :new, :create, :update, :edit, :destroy ]
+  resources :cars, only: [:index, :show, :new, :create, :destroy] do
+    resources :bookings, only: [:create, :new]
   end
 
-  resources :bookings, only: [ :show ]
+  resources :bookings, only: [:edit, :update, :destroy]
 end
