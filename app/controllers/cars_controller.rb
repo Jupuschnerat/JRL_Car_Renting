@@ -1,5 +1,5 @@
 class CarsController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_car, only: [:show, :edit, :update, :destroy]
 
   # GET /cars
@@ -7,25 +7,28 @@ class CarsController < ApplicationController
       @cars = Car.all
     if params["query"].present?
       @cars = Car.search_by_city_model(params["query"])
-      # @markers = @cars.map do |car|
-      #   {
-      #     lng: car.longitude,
-      #     lat: car.latitude,
-      #     id: car.id,
-      #     infoWindow: { content: render_to_string(partial: "/cars/map_window", locals: { car: car }) },
-      #     # marker_html: { content: render_to_string(partial: "marker", locals: {car: car}) }
-      #   }
+      @markers = @cars.map do |car|
+        {
+          lng: car.longitude,
+          lat: car.latitude,
+          id: car.id,
+          infoWindow: { content: render_to_string(partial: "/cars/map_window", locals: { car: car }) },
+          # marker_html: { content: render_to_string(partial: "marker", locals: {car: car}) }
+        }
     end
-      # @markers = @cars.map do |car|
-      #   {
-      #     lng: car.longitude,
-      #     lat: car.latitude,
-      #     id: car.id,
-      #     infoWindow: { content: render_to_string(partial: "/cars/map_window", locals: { car: car }) },
-      #     # marker_html: { content: render_to_string(partial: "marker", locals: {car: car}) }
-      #   }
-      # end
-    # end
+      @markers = @cars.map do |car|
+        {
+          lng: car.longitude,
+          lat: car.latitude,
+          id: car.id,
+          infoWindow: { content: render_to_string(partial: "/cars/map_window", locals: { car: car }) },
+          # marker_html: { content: render_to_string(partial: "marker", locals: {car: car}) }
+        }
+      end
+    end
+  end
+
+  def show
   end
 
   def show
@@ -35,14 +38,12 @@ class CarsController < ApplicationController
   # GET /cars/1
   def new
     @car = Car.new
-    # authorize @car
   end
 
   def create
     @car = Car.new(car_params)
     @car.user = current_user
-    # authorize @car
-    if @car.save
+    if @car.save!
       redirect_to car_path(@car)
     else
       render :new
@@ -69,6 +70,16 @@ class CarsController < ApplicationController
     end
   end
 
+  def my_cars
+    @user = current_user
+    @cars = Car.all.filter { |car| car.user == @user}
+  end
+
+  def my_cars_show
+    @user = current_user
+    @car = Car.find(params[:id])
+  end
+
   private
 
   def set_car
@@ -76,6 +87,6 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:plate, :model, :city, :price, :photo)
+    params.require(:car).permit(:plate, :model, :description, :category, :city, :price, :photo)
   end
 end

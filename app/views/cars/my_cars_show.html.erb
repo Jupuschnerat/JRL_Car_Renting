@@ -1,0 +1,23 @@
+<div>
+  <div class="container d-flex justify-content-start ml-0">
+    <div class="ml-5">
+      <h1><%= @car.model %></h1>
+    </div>
+  </div>
+
+  <h3 style="font-weight: bold;">My Bookings</h3>
+  <% @car.bookings.each do |booking| %>
+    <div class="card p-3 mt-3" style="position: relative;">
+      <div>
+        <p class="mb-0" style="font-weight: bold; font-size: 20px"><%= "#{booking.start_date} to #{booking.end_date}" %></p>
+        <p class="mb-0" style="font-weight: light; font-size: 16px"><%= "#{booking.user.email}" %></p>
+        <p class="mb-0" style="font-weight: light; font-size: 16px"><%= "#{booking.price}" %></p>
+      </div>
+      <a href=""></a>
+
+      <div style="position: absolute; top: 8px; right: 12px">
+        <%= link_to image_tag('https://icons-for-free.com/iconfiles/png/24/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png'), car_booking_path(@car, booking), method: :delete, data: { confirm: "You will lose this customer!"} %>
+      </div>
+    </div>
+  <% end %>
+</div>

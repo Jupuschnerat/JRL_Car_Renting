@@ -16,10 +16,15 @@
           </ul>
         </li>
       </ul>
-      <ul class="nav navbar-nav text-right">
-        <li><a class="nav-link" href="/users/sign_up"><span class="fas fa-user"></span> Sign Up</a></li>
-        <li><a class="nav-link" href="/users/sign_in"><span class="fas fa-sign-in-alt"></span> Login</a></li>
-      </ul>
+      <div class="nav navbar-nav navbar-right right-content">
+      <% if current_user.nil? %>
+        <span class="fas fa-user pt-2 text-secondary"></span><%= link_to "Sign Up", new_user_registration_path, class: "sign-up my-btn nav-link pt-1" %>
+        <span class="fas fa-sign-in-alt pt-2 text-secondary"></span><%= link_to "Log In", new_user_session_path, method: :get, class: "log-in my-btn nav-link pt-1" %>
+      <% else  %>
+        <span class="fa-solid fa-car-side py-2 text-secondary"></span><%= link_to 'My Cars', my_cars_path, class: "my-cars my-btn nav-link pt-1" %>
+        <span class="fa-solid fa-right-from-bracket py-2 text-secondary"></span><%= link_to 'Sign Out', destroy_user_session_path, data: {turbo_method: :delete}, class: "sign-out my-btn nav-link pt-1" %>
+      <% end %>
+      </div>
     </div>
   </div>
 </nav>

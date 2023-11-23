@@ -24,9 +24,10 @@ puts 'Seed: Seeding...'
     birth_date: Date.parse('2023-11-30'),
     password: "123456"
   )
-  car=Car.new(
+  car = Car.new(
     user: User.last,
     plate: "IA7B8D1",
+    description: "fast car",
     model: "Porsche",
     city: "London",
     price: 200.00
@@ -35,6 +36,19 @@ puts 'Seed: Seeding...'
 
   car.photo.attach(io: file, filename: "car.png", content_type: "image/png")
   car.save
+
+  car1 = Car.new(
+    user: User.last,
+    plate: "IA7B8D1",
+    description: "small car for loners",
+    model: "Fusca",
+    city: "London",
+    price: 200.00
+  )
+  file = URI.open("https://www.jeep.com.br/content/dam/jeep/products/675/1ad/1/2024/page/hero.webp")
+
+  car1.photo.attach(io: file, filename: "car.png", content_type: "image/png")
+  car1.save
 end
 
 puts 'Seed: Created!'

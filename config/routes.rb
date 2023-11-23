@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
+  # get 'pages/home'
+  resources :cars do
+    resources :bookings
+  end
+
+  # Additional routes for user's bookings
+  resources :bookings, only: [:edit, :update, :destroy]
 
   root to: 'pages#home'
 
-  get 'dashboard', to: 'dashboard#index'
-  resources :profiles, only: :update
-
-  resources :cars do
-    resources :bookings, only: [ :new, :create, :update, :edit, :destroy ]
-  end
-
-  resources :bookings, only: [ :show ]
+  get 'my_cars', to: 'cars#my_cars'
+  get 'my_cars/:id', to: 'cars#my_cars_show', as: :my_car
 end
