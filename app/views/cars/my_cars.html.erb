@@ -10,16 +10,18 @@
         <div class="col-md-3 mx-3">
           <div class="card mb-5" style="width: 18rem; box-shadow: 1px 1px 8px #00000030;">
             <%= link_to my_car_path(car) do %>
-              <%= car.model %>
+              <%= car.photo %>
             <% end %>
             <div class="card-body">
-              <h5 class="card-title"> <%= car.model %></h5>
+              <h5 class="card-title px-0"> <%= car.model %></h5>
               <div>
-                <span class="card-text" style="float: right; font-weight: bold;"> $ <%= car.price %></span>
+                <h6 class="card-text pb-0" style="float: right; font-weight: bold;"> $ <%= car.price %></h6>
               </div>
-              <div class="mt-3">
-                <span class="card-text"><%= link_to image_tag('https://freeiconshop.com/wp-content/uploads/edd/edit-extra-outline.png', width: "24px"), edit_car_path(car) %></span>
-                <span class="card-text" style="float: right;"><%= link_to image_tag('https://icons-for-free.com/iconfiles/png/24/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png'), car_path(car), method: :delete, data: {confirm: "This will delete #{car.model}!"} %></span>
+              <div class="mt-4 border-top border-dark p-0">
+                <div class="d-flex">
+                  <div class="card-text p-2 mx-5"><%= link_to image_tag('https://freeiconshop.com/wp-content/uploads/edd/edit-extra-outline.png', width: "24px"), edit_car_path(car) %></div>
+                  <div class="card-text p-2 mx-4" style="float: right;"><%= link_to image_tag('https://icons-for-free.com/iconfiles/png/24/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png'), car_path(car), method: :delete, data: {confirm: "This will delete #{car.model}!"} %></div>
+                </div>
               </div>
             </div>
           </div>
