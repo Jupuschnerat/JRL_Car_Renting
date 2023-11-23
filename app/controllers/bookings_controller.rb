@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-  skip_after_action :verify_policy_scoped, only: :index
+  # skip_after_action :verify_policy_scoped, only: :index
   before_action :set_booking, only: [ :show ]
   before_action :set_car, only: [ :new, :create, :edit ]
 

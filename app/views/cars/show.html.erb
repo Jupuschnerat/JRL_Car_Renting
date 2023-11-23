@@ -1,16 +1,33 @@
-<div class="container-sm">
-  <h2 class="show-title">Car details</h2>
-  <div>
-    <div class="car-details">
+<div class="container-lg">
 
-      <p><%= @car.model%></p>
-      <p>Offered by <%= @car.user.first_name%> </p>
-  </div >
-  <div data-controller='booking-calculus'>
-    <%= cl_image_tag @car.photo.key, height: 200, width: 300, crop: :fit %>
-    <div>
-    <%= render "bookings/form", car: @car, booking: @booking %>
-
+  <div class="row">
+    <div class="car-details col-md-3 p-4 my-3">
+      <h2 class="show-title">Car details</h2>
+      <div data-controller='booking-calculus'>
+      <% if @car.photo.present? %>
+          <%= cl_image_tag @car.photo.key, height: 200, width: 300, crop: :fit %>
+      <% else %>
+          <!-- Handle the case where @car.photo is nil -->
+          <p>No photo available</p>
+      <% end %>
+      </div>
+      <p>Car model: <%= @car.model%></p>
+      <p><%= @car.description %></p>
+      <p>City: <%= @car.city %></p>
+      <p>$ <%= @car.price %></p>
+      <p>Offered by <strong><%= @car.user.first_name%></strong>.</p>
+      <br>
+      <div class="mt-4 p-3 border border-dark" style="box-shadow: 5px 5px 8px black"><%= render "bookings/form", car: @car, booking: @booking %></div>
     </div>
+    <div class="map col-md-9 my-4 p-5">
+      <div style="width: 40%; height: 50vh;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
   </div>
 </div>
