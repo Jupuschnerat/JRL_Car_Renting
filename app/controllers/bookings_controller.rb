@@ -17,13 +17,12 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-
     @booking.user = current_user
     @booking.car = @car
     @booking.booking_price = (@booking.end_date - @booking.start_date).to_i * @booking.car.price
 
     if @booking.save
-      flash[:flash] = 'Booking created'
+      flash[:notice] = 'Booking created'
       redirect_to car_path(@booking.car)
     else
       render 'cars/show'
