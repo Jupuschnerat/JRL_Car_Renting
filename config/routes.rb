@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   # get 'pages/home'
   resources :cars do
-    resources :bookings
+    resources :bookings, only: :create
   end
 
   # Additional routes for user's bookings
-  resources :bookings, only: [:edit, :update, :destroy]
+  # resources :bookings, only: [:edit, :update, :destroy]
 
   root to: 'pages#home'
 
