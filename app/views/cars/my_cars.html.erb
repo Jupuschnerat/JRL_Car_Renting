@@ -19,8 +19,8 @@
               </div>
               <div class="mt-4 border-top border-dark p-0">
                 <div class="d-flex">
-                  <div class="card-text p-2 mx-5"><%= link_to image_tag('https://freeiconshop.com/wp-content/uploads/edd/edit-extra-outline.png', width: "24px"), edit_car_path(car) %></div>
-                  <div class="card-text p-2 mx-4" style="float: right;"><%= link_to image_tag('https://icons-for-free.com/iconfiles/png/24/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png'), car_path(car), method: :delete, data: {confirm: "This will delete #{car.model}!"} %></div>
+                  <span class="card-text p-2 mx-5"><%= link_to image_tag('edit.png', width: "24px"), edit_car_path(car) %></span>
+                  <div class="card-text p-2 mx-4"><%= link_to image_tag('delete.png'), car_path(car), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></span>
                 </div>
               </div>
             </div>
