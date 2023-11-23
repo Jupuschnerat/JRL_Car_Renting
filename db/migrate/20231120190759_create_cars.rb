@@ -4,7 +4,6 @@ class CreateCars < ActiveRecord::Migration[7.1]
       t.string :plate
       t.string :model
       t.string :city
-      t.string :description
       t.float :price
       t.string :category
       t.string :description
