@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-  skip_after_action :verify_policy_scoped, only: :index
+  # skip_after_action :verify_policy_scoped, only: :index
   before_action :set_booking, only: [ :show ]
   before_action :set_car, only: [ :new, :create, :edit ]
 
@@ -17,13 +17,12 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-
     @booking.user = current_user
     @booking.car = @car
     @booking.booking_price = (@booking.end_date - @booking.start_date).to_i * @booking.car.price
 
     if @booking.save
-      flash[:flash] = 'Booking created'
+      flash[:notice] = 'Booking created'
       redirect_to car_path(@booking.car)
     else
       render 'cars/show'
