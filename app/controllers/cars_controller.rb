@@ -4,16 +4,27 @@ class CarsController < ApplicationController
 
   # GET /cars
   def index
-    @cars = Car.all
-
-    # @markers = @cars.geocoded.map do |car|
-    #   {
-    #     lat: car.latitude,
-    #     lng: car.longitude,
-    #     # info_window_html: render_to_string(partial: "info_window", locals: {car: car}),
-    #     # marker_html: render_to_string(partial: "marker", locals: {car: car})
-    #   }
-
+      @cars = Car.all
+    if params["query"].present?
+      @cars = Car.search_by_city_model(params["query"])
+      # @markers = @cars.map do |car|
+      #   {
+      #     lng: car.longitude,
+      #     lat: car.latitude,
+      #     id: car.id,
+      #     infoWindow: { content: render_to_string(partial: "/cars/map_window", locals: { car: car }) },
+      #     # marker_html: { content: render_to_string(partial: "marker", locals: {car: car}) }
+      #   }
+    end
+      # @markers = @cars.map do |car|
+      #   {
+      #     lng: car.longitude,
+      #     lat: car.latitude,
+      #     id: car.id,
+      #     infoWindow: { content: render_to_string(partial: "/cars/map_window", locals: { car: car }) },
+      #     # marker_html: { content: render_to_string(partial: "marker", locals: {car: car}) }
+      #   }
+      # end
     # end
   end
 

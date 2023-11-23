@@ -3,7 +3,7 @@
       <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-        placeholder: "Enter a city, brand and/or model"
+        placeholder: "Enter a city, or model"
         %>
         <%= button_tag "Find Cars", class: "btn btn-success my-btn", style: "display: none;" %>
         <% end %>
@@ -14,24 +14,20 @@
     <div class="cards">
       <% @cars.each do |car| %>
       <%= link_to car_path(car), class:"card-trip text-decoration-none" do %>
-          <div id="carouselExampleSlidesOnly">
-            <div class="carousel-inner">
-              <div class="carousel-item active cars-img">
-              </div>
+        <div id="carouselExampleSlidesOnly">
+          <div class="carousel-inner">
+            <div class="carousel-item active cars-img">
             </div>
-
           </div>
-          <div class="card-trip-infos">
+        </div>
+        <div class="card-trip-infos">
           <div>
             <h2 class="black-p"><%= "#{car.model}" %></h2>
             <p class="black"> <%= "#{car.description}" %> </p>
           </div>
-          <h2 class="card-trip-pricing">$<%= car.price %></h2>
-          </div>
-
-
+            <h2 class="card-trip-pricing">$<%= car.price %></h2>
+        </div>
       <% end %>
       <% end %>
-
     </div>
 </div>
