@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :profiles, only: :update
 
   resources :cars do
-    resources :bookings, only: [ :new, :create ]
+    resources :bookings, only: [ :new, :create, :update, :edit, :destroy ]
   end
 
   resources :bookings, only: [ :show ]
