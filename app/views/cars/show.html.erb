@@ -9,8 +9,12 @@
       <p><%= @car.price %></p>
     </div>
     <div class="vertical-stack">
-      <%= cl_image_tag @car.photo.key, height: 200, width: 300, crop: :fit %>
-      <a href="#" class="btn btn-primary">Book a car</a>
+      <% if @car.photo.present? %>
+        <%= cl_image_tag @car.photo.key, height: 200, width: 300, crop: :fit %>
+      <% else %>
+        <!-- Handle the case where @car.photo is nil -->
+        <p>No photo available</p>
+      <% end %>      <a href="#" class="btn btn-primary">Book a car</a>
     </div>
   </div>
 </div>
