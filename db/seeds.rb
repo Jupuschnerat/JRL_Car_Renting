@@ -27,6 +27,7 @@ puts 'Seed: Seeding...'
   car = Car.new(
     user: User.last,
     plate: "IA7B8D1",
+    description: "fast car",
     model: "Porsche",
     city: "London",
     price: 200.00
@@ -39,6 +40,7 @@ puts 'Seed: Seeding...'
   car1 = Car.new(
     user: User.last,
     plate: "IA7B8D1",
+    description: "small car for loners",
     model: "Fusca",
     city: "London",
     price: 200.00
