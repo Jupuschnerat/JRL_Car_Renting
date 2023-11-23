@@ -1,5 +1,5 @@
 class CarsController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_car, only: [:show, :edit, :update, :destroy]
 
   # GET /cars
@@ -34,13 +34,11 @@ class CarsController < ApplicationController
   # GET /cars/1
   def new
     @car = Car.new
-    # authorize @car
   end
 
   def create
     @car = Car.new(car_params)
     @car.user = current_user
-    # authorize @car
     if @car.save!
       redirect_to car_path(@car)
     else

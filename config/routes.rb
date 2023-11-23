@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'pages/home'
+  # get 'pages/home'
   resources :cars do
     resources :bookings
   end
