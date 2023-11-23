@@ -21,9 +21,9 @@
         <span class="fas fa-user pt-2 text-secondary"></span><%= link_to "Sign Up", new_user_registration_path, class: "sign-up my-btn nav-link pt-1" %>
         <span class="fas fa-sign-in-alt pt-2 text-secondary"></span><%= link_to "Log In", new_user_session_path, method: :get, class: "log-in my-btn nav-link pt-1" %>
       <% else  %>
-        <%= link_to 'Sign Out', destroy_user_session_path, data: {turbo_method: :delete}, class: "sign-out my-btn", style: "border: 3px solid rgb(200,200,200); color: rgb(200,200,200); background-color: white" %>
+        <span class="fa-solid fa-car-side py-2 text-secondary"></span><%= link_to 'My Cars', my_cars_path, class: "my-cars my-btn nav-link pt-1" %>
+        <span class="fa-solid fa-right-from-bracket py-2 text-secondary"></span><%= link_to 'Sign Out', destroy_user_session_path, data: {turbo_method: :delete}, class: "sign-out my-btn nav-link pt-1" %>
       <% end %>
-      <!-- <i class="fas fa-ellipsis-v"></i> -->
       </div>
     </div>
   </div>
