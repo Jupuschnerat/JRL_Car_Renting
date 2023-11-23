@@ -16,7 +16,7 @@
           </ul>
         </li>
       </ul>
-      <div class="nav navbar-nav right-content">
+      <div class="nav navbar-nav navbar-right right-content">
       <% if current_user.nil? %>
         <span class="fas fa-user pt-2 text-secondary"></span><%= link_to "Sign Up", new_user_registration_path, class: "sign-up my-btn nav-link pt-1" %>
         <span class="fas fa-sign-in-alt pt-2 text-secondary"></span><%= link_to "Log In", new_user_session_path, method: :get, class: "log-in my-btn nav-link pt-1" %>
