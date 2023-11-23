@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   resources :profiles, only: :update
-  resources :cars, only: [:index, :show, :new, :create, :destroy] do
+  resources :cars, only: [:index, :show, :edit, :update, :new, :create, :destroy] do
     resources :bookings, only: [:create, :new]
   end
 
