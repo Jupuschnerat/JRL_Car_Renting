@@ -1,0 +1,30 @@
+
+<div id="wrapper">
+  <div class="container" style="width: 400px; margin: 20px auto;">
+    <h1>My Cars</h1>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="row d-flex justify-content-around">
+    <% @cars.each do |car| %>
+        <div class="col-md-3 mx-3">
+          <div class="card mb-5" style="width: 18rem; box-shadow: 1px 1px 8px #00000030;">
+            <%= link_to my_car_path(car) do %>
+              <%= car.model %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"> <%= car.model %></h5>
+              <div>
+                <span class="card-text" style="float: right; font-weight: bold;"> $ <%= car.price %></span>
+              </div>
+              <div class="mt-3">
+                <span class="card-text"><%= link_to image_tag('https://freeiconshop.com/wp-content/uploads/edd/edit-extra-outline.png', width: "24px"), edit_car_path(car) %></span>
+                <span class="card-text" style="float: right;"><%= link_to image_tag('https://icons-for-free.com/iconfiles/png/24/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png'), car_path(car), method: :delete, data: {confirm: "This will delete #{car.model}!"} %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
