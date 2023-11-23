@@ -10,7 +10,7 @@
         <div class="col-md-4 mx-0">
           <div class="card my-3" style="box-shadow: 2px 2px 8px #00000030; width: 19rem;">
             <%= link_to my_car_path(car) do %>
-              <%= car.photo %>
+              <%= cl_image_tag car.photo.key, height: 200, width: 300, crop: :fit %>
             <% end %>
             <div class="card-body">
               <h5 class="card-title px-0"> <%= car.model %></h5>
