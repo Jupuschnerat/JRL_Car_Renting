@@ -18,7 +18,7 @@ export default class extends Controller {
     // Calculating Days
     const startDate = new Date(this.startDateTarget.value)
     const endDate = new Date(this.endDateTarget.value)
-    console.log(endDate)
+    // console.log(endDate)
     const differenceInMilliseconds = endDate - startDate
     const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24)
 
