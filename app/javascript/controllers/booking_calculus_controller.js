@@ -11,8 +11,7 @@ export default class extends Controller {
     // console.log(this.orderTotalTarget)
     // console.log(this.startDateTarget)
     // console.log(this.endDateTarget)
-    // const a = this.endDateTarget.value
-    // console.log(a)
+
   }
 
   calculate(){
