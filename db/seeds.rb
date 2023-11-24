@@ -10,7 +10,7 @@
 # puts 'Seed: Deleting existing records...'
 
 # Review.delete_all
-# Booking.delete_all
+Booking.delete_all
 Car.delete_all
 User.delete_all
 
