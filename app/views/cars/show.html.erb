@@ -19,13 +19,13 @@
       <br>
       <div class="mt-4 p-3 border border-dark" style="box-shadow: 5px 5px 8px black"><%= render "bookings/form", car: @car, booking: @booking %></div>
     </div>
-    <div class="map col-md-9 my-4 p-5">
-      <div style="width: 40%; height: 50vh;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      <div class="map col-md-9 my-4 p-5">
+        <div style="width: 40%; height: 50vh;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
       </div>
-    </div>
   </div>
   <div class="row">
 
