@@ -4,7 +4,7 @@
       <%= form_tag cars_path, method: :get do %>
         <%= text_field_tag :query,
         params[:query],
-        class: "form-control",
+        class: "form-control rounded-input",
           placeholder: "Enter a car model or a city"
           %>
           <%= button_tag "Find Cars", class: "btn btn-success my-btn", style: "display: none;" %>
