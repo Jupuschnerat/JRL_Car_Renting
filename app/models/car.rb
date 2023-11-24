@@ -3,7 +3,6 @@ class Car < ApplicationRecord
   geocoded_by :city
 
   belongs_to :user
-  validates :first_name, :last_name, :email, :birth_date, :password, presence: true
   has_many :bookings
   has_one_attached :photo
     # validates :plate, uniqueness: true, lenght: {is: 7}, presence: true

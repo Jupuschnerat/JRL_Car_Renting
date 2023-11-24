@@ -30,19 +30,19 @@ last_name = ['Puschnerat', 'Ramos', 'Prado', 'Menezes', 'Valdivia', 'Severo', 'M
   )
   puts User.last
 
-end
+  car = Car.new(
+    user: User.last,
+    plate: "IA7B8D1",
+    description: "fast car",
+    model: "Porsche",
+    city: "London",
+    price: 200.00
+  )
+  file = URI.open("https://www.jeep.com.br/content/dam/jeep/products/675/1ad/1/2024/page/hero.webp")
 
-car = Car.new(
-  user: User.last,
-  plate: "IA7B8D1",
-  description: "fast car",
-  model: "Porsche",
-  city: "London",
-  price: 200.00
-)
-file = URI.open("https://www.jeep.com.br/content/dam/jeep/products/675/1ad/1/2024/page/hero.webp")
-
-car.photo.attach(io: file, filename: "car.png", content_type: "image/png")
-car.save!
+  car.photo.attach(io: file, filename: "car.png", content_type: "image/png")
+  car.save!
 
 puts 'Seed: Created!'
+
+end
