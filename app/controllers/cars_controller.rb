@@ -28,21 +28,20 @@ class CarsController < ApplicationController
     end
   end
 
-  def show
-  end
-
-  def show
-    @booking = Booking.new
-  end
-
   # GET /cars/1
   def new
     @car = Car.new
+    # authorize @car
+  end
+
+  def show
+
   end
 
   def create
     @car = Car.new(car_params)
     @car.user = current_user
+    # authorize @car
     if @car.save
       redirect_to car_path(@car)
     else
@@ -50,6 +49,7 @@ class CarsController < ApplicationController
     end
 
   end
+
 
   def edit
   end
