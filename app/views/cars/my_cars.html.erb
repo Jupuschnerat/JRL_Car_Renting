@@ -22,8 +22,8 @@
               </div>
               <div class="mt-3 border-top border-dark">
                 <div class="d-flex">
-                  <span class="card-text p-1 mx-5"><%= link_to image_tag('edit.png'), edit_car_path(car) %></span>
-                  <span class="card-text p-1 mx-5"><%= link_to image_tag('delete.png'), car_path(car), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></span>
+                  <span class="card-text p-1 mx-5"><%= link_to image_tag('app/assets/images/edit.png'), edit_car_path(car)</span> %>
+                  <span class="card-text p-1 mx-5"><%= link_to image_tag('app/assets/images/delete.png'), car_path(car), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></span>
                 </div>
               </div>
             </div>
