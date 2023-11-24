@@ -17,12 +17,12 @@
       <p>Offered by <strong><%= @car.user.first_name%></strong>.</p>
       <br>
       </div>
-      <div class="formbook col-md-6 mt-5 p-4 border border-dark"
+      <div class="formbook col-md-6 mt-5 mx-5 p-4 border border-dark"
       data-controller='booking-calculus'
       style="box-shadow: 5px 5px 8px black">
       <%= render "bookings/form", car: @car, booking: @booking %>
       </div>
-      <div class="map col my-4 p-5">
+      <div class="map col my-5 p-0">
         <div style="width: 400px; height: 50vh;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
