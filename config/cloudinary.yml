@@ -1,0 +1,13 @@
+development:
+  cloud_name: 'dp4krnmu8'
+  api_key: '225923461573554'
+  api_secret: '3VdqCG0M12qW1HEWoiaxVlDUaGI'
+  enhance_image_tag: true
+  static_file_support: false
+
+production:
+  cloud_name: 'dp4krnmu8'
+  api_key: '225923461573554'
+  api_secret: '3VdqCG0M12qW1HEWoiaxVlDUaGI'
+  enhance_image_tag: true
+  static_file_support: false

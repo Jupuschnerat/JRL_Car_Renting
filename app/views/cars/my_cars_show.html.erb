@@ -1,12 +1,16 @@
 <div class="container d-flex justify-content-start ml-0">
   <h2 class="py-4" style="font-weight: bold;"><%= @car.model %> Bookings</h2>
   <% @car.bookings.each do |booking| %>
+    <% if booking.present? %>
     <div class="card p-3 mt-3" style="position: relative;">
       <div>
         <p class="mb-0" style="font-weight: bold; font-size: 20px"><%= "#{booking.start_date} to #{booking.end_date}" %></p>
         <p class="mb-0" style="font-weight: light; font-size: 16px"><%= "#{booking.user.email}" %></p>
         <p class="mb-0" style="font-weight: light; font-size: 16px"><%= "#{booking.price}" %></p>
       </div>
+    <% else %>
+      <div><p>Sorry, there's no booking for this car yet!</p></div>
+    <% end %>
       <a href=""></a>
 
       <div style="position: absolute; top: 8px; right: 12px">
