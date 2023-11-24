@@ -11,14 +11,15 @@ export default class extends Controller {
     // console.log(this.orderTotalTarget)
     // console.log(this.startDateTarget)
     // console.log(this.endDateTarget)
-
+    // const a = this.endDateTarget.value
+    // console.log(a)
   }
 
   calculate(){
     // Calculating Days
     const startDate = new Date(this.startDateTarget.value)
     const endDate = new Date(this.endDateTarget.value)
-    // console.log(endDate)
+    console.log(endDate)
     const differenceInMilliseconds = endDate - startDate
     const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24)
 
