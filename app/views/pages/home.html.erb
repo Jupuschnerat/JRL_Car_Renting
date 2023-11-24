@@ -1,5 +1,15 @@
 <h1 class="text-dark bannertext pt-3">Car4you<br>Rental</h1>
-<div class="cover mb-4 d-flex justify-content-center">
+<div class="cover mb-4 d-flex">
+    <div class="search-container p-4">
+      <%= form_tag cars_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+          placeholder: "Enter a car model or a city"
+          %>
+          <%= button_tag "Find Cars", class: "btn btn-success my-btn", style: "display: none;" %>
+          <% end %>
+    </div>
 </div>
 <div class="container text-center text-black">
   <br>

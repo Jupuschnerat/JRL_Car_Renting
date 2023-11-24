@@ -1,28 +1,26 @@
-
-<div id="wrapper">
-  <div class="container" style="margin: 20px auto">
-    <h1>My Cars</h1>
+<div class="container" style="margin: 10px auto">
+    <h1 class="my-3">My Cars</h1>
   </div>
   <hr>
   <div class="container d-flex align-items-center justify-content-center">
     <div class="row">
       <% @cars.each do |car| %>
         <div class="col-md-4 mx-0">
-          <div class="card my-3" style="box-shadow: 2px 2px 8px #00000030; width: 19rem;">
-            <%= link_to my_car_path(car) do %>
+          <div class="card-trip my-3" style="box-shadow: 2px 2px 8px #00000030; width: 19rem;">
+            <%= link_to my_car_path(car), class:"text-decoration-none" do %>
               <% if car.photo.present? %>
             <%= cl_image_tag car.photo.key, height: 200, width: 300, crop: :fit %>
               <% else %>
             <!-- Handle the case where car.photo is nil -->
-            <p> <%= car.model %></p>
+            <h3 class="m-5 p-5"><%= car.model %></h2>
               <% end %>
             <% end %>
             <div class="card-body">
-              <h5 class="card-title px-0"> <%= car.model %></h5>
+              <h5 class="card-title px-2"> <%= car.model %></h5>
               <div>
-                <h6 class="card-text pb-0" style="float: right; font-weight: bolder"> $ <%= car.price %></h6>
+                <h6 class="card-text pb-0 mx-2" style="float: right; font-weight: bolder"> $ <%= car.price %></h6>
               </div>
-              <div class="mt-4 border-top border-dark">
+              <div class="mt-3 border-top border-dark">
                 <div class="d-flex">
                   <span class="card-text p-1 mx-5"><%= link_to image_tag('edit.png'), edit_car_path(car) %></span>
                   <span class="card-text p-1 mx-5"><%= link_to image_tag('delete.png'), car_path(car), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></span>
